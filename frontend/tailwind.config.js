@@ -18,7 +18,7 @@ export default {
       fontSize: {
         h1: clamp("2.5rem", "20rem"),
         h2: clamp("2rem", "3.5rem"),
-        h3: clamp("1.75rem", "3rem"),
+        h3: clamp("1rem", "6rem"),
         p: clamp("1rem", "1.5rem"),
       },
       screens: {
@@ -42,6 +42,7 @@ export default {
         // Laptops and medium-sized devices
         laptop: "1024px",
         "laptop-md": "1100px",
+        "laptop-middle": "1250px",
         "laptop-lg": "1366px",
 
         // Desktops and monitors

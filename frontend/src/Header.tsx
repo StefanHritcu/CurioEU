@@ -10,9 +10,17 @@ import { FaFacebookF } from "react-icons/fa6";
 import { LuYoutube } from "react-icons/lu";
 import { ImLinkedin2 } from "react-icons/im";
 import { FiGithub } from "react-icons/fi";
+import React from "react";
 
-const Header: React.FC = () => {
-  const [isToggleMenuOpen, setIsToggleMenuOpen] = useState(false);
+{
+  /* INTERFACE specifies what props a component expects */
+}
+interface HeaderProps {
+  isScrolled: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
+  const [isToggleMenuOpen, setIsToggleMenuOpen] = useState<boolean>(false);
 
   const handleOpenToggleMenu = () => {
     setIsToggleMenuOpen(!isToggleMenuOpen);
@@ -27,7 +35,7 @@ const Header: React.FC = () => {
             {/* --- --- --- BUTTON (only for mobile devices) --- --- ---  */}
             <button
               onClick={handleOpenToggleMenu}
-              className="w-8 h-8 tablet:hidden m-2"
+              className="w-8 h-8 tablet-lg:hidden m-2"
             >
               {isToggleMenuOpen ? (
                 <img src={Hamburger} alt="Hamburger Menu" />
@@ -40,14 +48,14 @@ const Header: React.FC = () => {
             <div>
               <Link to="/">
                 <img
-                  className="hidden tablet:block pl-12 p-2"
+                  className="hidden tablet-lg:block pl-12 p-2"
                   src={MainLogo}
                   alt="main Logo image"
                 />
               </Link>
               <Link to="/">
                 <img
-                  className="tablet:hidden pl-10 p-2"
+                  className="tablet-lg:hidden pl-10 p-2"
                   src={ResponsiveLogo}
                   alt="main Logo image"
                 />
@@ -56,7 +64,7 @@ const Header: React.FC = () => {
           </section>
 
           {/* --- --- --- tablet and laptops LINKS --- --- ---  */}
-          <section className="hidden tablet:block">
+          <section className="hidden tablet-lg:block">
             <nav className="flex justify-between">
               <Link to="/random-curiosity">
                 <Typography
@@ -70,7 +78,7 @@ const Header: React.FC = () => {
               <Link to="/big-questions">
                 <Typography
                   variant="h3"
-                  className="font-bold mx-4 p-2 hover:scale-105 duration-1000 transition-transform ease-in-out hover:text-second-bg"
+                  className="font-bold mx-4 p-2 hidden tablet-xl:block hover:scale-105 duration-1000 transition-transform ease-in-out hover:text-second-bg"
                 >
                   Big Questions
                 </Typography>
@@ -79,7 +87,7 @@ const Header: React.FC = () => {
               <Link to="/eu-countries">
                 <Typography
                   variant="h3"
-                  className="font-bold mx-4 p-2 hover:scale-105 duration-1000 transition-transform ease-in-out hover:text-second-bg"
+                  className="font-bold mx-4 p-2 hover:scale-105 hidden laptop-md:block duration-1000 transition-transform ease-in-out hover:text-second-bg"
                 >
                   Eu-Countries
                 </Typography>
@@ -88,7 +96,7 @@ const Header: React.FC = () => {
               <Link to="/data-charts">
                 <Typography
                   variant="h3"
-                  className="font-bold mx-4 p-2 hover:scale-105 duration-1000 transition-transform ease-in-out hover:text-second-bg"
+                  className="font-bold mx-4 p-2 hidden laptop-middle:block hover:scale-105 duration-1000 transition-transform ease-in-out hover:text-second-bg"
                 >
                   Data Charts
                 </Typography>
@@ -114,7 +122,9 @@ const Header: React.FC = () => {
           </section>
         </div>
         {/* --- --- --- PROGRAMMER FACEBOOK, YOUTUBE, LINKEDIN, GITHUB AND MAIL LINKS --- --- ---  */}
-        <section className="bg-second-bg h-14">
+        <section
+          className={`h-14 ${isScrolled ? "bg-second-bg" : "bg-green-400"}`}
+        >
           <div className="hidden tablet:block">
             <nav className="flex items-center justify-end">
               <a
@@ -164,4 +174,5 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+// REACT.MEMO(HEADER) avoid unnecessary rendering of a component if the props are not changed
+export default React.memo(Header);
