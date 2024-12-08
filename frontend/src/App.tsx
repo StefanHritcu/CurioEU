@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
+import ToggleMenu from "./ToggleMenu";
 
 const App: React.FC = () => {
   {
@@ -10,6 +11,7 @@ const App: React.FC = () => {
     const scrollPosition: number = window.scrollY;
     if (scrollPosition < 50) {
       setIsScrolledToTop(true);
+      console.log("IsScrolledToTop < 50px:", isScrolledToTop);
     } else {
       setIsScrolledToTop(false);
     }
@@ -24,7 +26,8 @@ const App: React.FC = () => {
   return (
     <div>
       <Header isScrolled={isScrolledToTop} />
-      <main>
+      <ToggleMenu />
+      <main className="bg-yellow-400">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
           non velit facilis?
