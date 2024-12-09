@@ -9,7 +9,7 @@ const App: React.FC = () => {
   const [isScrolledToTop, setIsScrolledToTop] = useState<boolean>(false);
   const handleScroll = (event: Event) => {
     const scrollPosition: number = window.scrollY;
-    if (scrollPosition < 50) {
+    if (scrollPosition > 50) {
       setIsScrolledToTop(true);
       console.log("IsScrolledToTop < 50px:", isScrolledToTop);
     } else {

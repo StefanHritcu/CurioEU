@@ -19,7 +19,7 @@ export default {
         h1: clamp("2.5rem", "20rem"),
         h2: clamp("2rem", "3.5rem"),
         h3: clamp("1rem", "6rem"),
-        p: clamp("1rem", "1.5rem"),
+        p: clamp("1.5rem", "2rem"),
       },
       screens: {
         // Extra small phones and old devices

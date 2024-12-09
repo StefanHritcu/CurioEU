@@ -12,6 +12,8 @@ import { ImLinkedin2 } from "react-icons/im";
 import { FiGithub } from "react-icons/fi";
 import React from "react";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "./features/MainSlice";
 
 {
   /* INTERFACE specifies what props a component expects */
@@ -25,6 +27,12 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
 
   const handleOpenToggleMenu = () => {
     setIsToggleMenuOpen(!isToggleMenuOpen);
+  };
+
+  const dispatch = useDispatch();
+  //TOGGLE MENU CLICKED
+  const handleIsToggleMenuClicked = () => {
+    dispatch(toggleMenu());
   };
 
   return (
@@ -41,19 +49,21 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             >
               {isToggleMenuOpen ? (
                 <motion.img
-                  initial={{ x: -100 }}
-                  animate={{ x: isScrolled ? 0 : -100 }}
-                  transition={{ type: "spring", stiffness: 120 }}
-                  src={Hamburger}
-                  alt="Hamburger Menu"
-                />
-              ) : (
-                <motion.img
-                  initial={{ x: -100 }}
-                  animate={{ x: isScrolled ? 0 : -100 }}
+                  initial={{ x: 0 }}
+                  animate={{ x: isScrolled ? -100 : 0 }}
                   transition={{ type: "spring", stiffness: 120 }}
                   src={Close}
                   alt="Close Menu"
+                  onClick={handleIsToggleMenuClicked}
+                />
+              ) : (
+                <motion.img
+                  initial={{ x: 0 }}
+                  animate={{ x: isScrolled ? -100 : 0 }}
+                  transition={{ type: "spring", stiffness: 120 }}
+                  src={Hamburger}
+                  alt="Hamburger Menu"
+                  onClick={handleIsToggleMenuClicked}
                 />
               )}
             </button>
@@ -62,8 +72,8 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             <div>
               <Link to="/">
                 <motion.img
-                  initial={{ x: -200 }}
-                  animate={{ x: isScrolled ? 0 : -200 }}
+                  initial={{ x: 0 }}
+                  animate={{ x: isScrolled ? -200 : 0 }}
                   transition={{ type: "spring", stiffness: 100, duration: 0.7 }}
                   className="hidden tablet-lg:block pl-12 p-2"
                   src={MainLogo}
@@ -72,8 +82,8 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
               </Link>
               <Link to="/">
                 <motion.img
-                  initial={{ x: -200 }}
-                  animate={{ x: isScrolled ? 0 : -200 }}
+                  initial={{ x: 0 }}
+                  animate={{ x: isScrolled ? -200 : 0 }}
                   transition={{ type: "spring", stiffness: 100, duration: 0.7 }}
                   className="tablet-lg:hidden pl-10 p-2"
                   src={ResponsiveLogo}
@@ -88,8 +98,8 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             <nav className="flex justify-between">
               <Link to="/random-curiosity">
                 <motion.div
-                  initial={{ y: -50 }}
-                  animate={{ y: isScrolled ? 0 : -50 }}
+                  initial={{ y: 0 }}
+                  animate={{ y: isScrolled ? -50 : 0 }}
                   transition={{
                     type: "spring",
                     stiffness: 100,
@@ -106,8 +116,8 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
               </Link>
 
               <motion.div
-                initial={{ y: -70 }}
-                animate={{ y: isScrolled ? 0 : -70 }}
+                initial={{ y: 0 }}
+                animate={{ y: isScrolled ? -70 : 0 }}
                 transition={{
                   type: "spring",
                   stiffness: 130,
@@ -125,8 +135,8 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
               </motion.div>
 
               <motion.div
-                initial={{ y: -90 }}
-                animate={{ y: isScrolled ? 0 : -90 }}
+                initial={{ y: 0 }}
+                animate={{ y: isScrolled ? -90 : 0 }}
                 transition={{
                   type: "spring",
                   stiffness: 160,
@@ -144,8 +154,8 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
               </motion.div>
 
               <motion.div
-                initial={{ y: -120 }}
-                animate={{ y: isScrolled ? 0 : -120 }}
+                initial={{ y: 0 }}
+                animate={{ y: isScrolled ? -120 : 0 }}
                 transition={{
                   type: "spring",
                   stiffness: 190,
@@ -174,8 +184,8 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             </Typography>
 
             <motion.div
-              initial={{ x: 120 }}
-              animate={{ x: isScrolled ? 0 : 120 }}
+              initial={{ x: 0 }}
+              animate={{ x: isScrolled ? 120 : 0 }}
               transition={{
                 type: "spring",
                 stiffness: 60,
@@ -194,7 +204,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
         </div>
         {/* --- --- --- PROGRAMMER FACEBOOK, YOUTUBE, LINKEDIN, GITHUB AND MAIL LINKS --- --- ---  */}
         <section className="h-14 bg-second-bg z-50">
-          <div className="hidden tablet:block">
+          <div className="hidden tablet-lg:block">
             <nav className="flex items-center justify-end">
               <a
                 href="https://www.facebook.com/profile.php?id=61563101911367"
