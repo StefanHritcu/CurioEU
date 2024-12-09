@@ -18,8 +18,8 @@ const ToggleMenu: React.FC = () => {
     <>
       <motion.div
         initial={{ x: -1000 }}
-        animate={{ x: toggleMenuOpenStatus ? -0 : -1000 }}
-        className="absolute tablet-lg:hidden top-[127px] bg-second-bg w-screen h-screen"
+        animate={{ x: toggleMenuOpenStatus ? 0 : -1000 }}
+        className="absolute tablet-lg:hidden top-[127px] bg-second-bg w-min-[320px] w-max-[768px] w-full h-screen"
       >
         <div className="flex flex-col items-start justify-center pl-4">
           {/* Random Curiosity LINK */}
