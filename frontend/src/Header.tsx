@@ -14,6 +14,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "./features/MainSlice";
+import RealTimeData from "./components/RealTimeData";
 
 {
   /* INTERFACE specifies what props a component expects */
@@ -203,9 +204,11 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
           </section>
         </div>
         {/* --- --- --- PROGRAMMER FACEBOOK, YOUTUBE, LINKEDIN, GITHUB AND MAIL LINKS --- --- ---  */}
-        <section className="h-14 bg-second-bg z-50">
+        <section className="h-14 bg-second-bg z-50 flex items-center justify-between">
+          <RealTimeData />
+
           <div className="hidden tablet-lg:block">
-            <nav className="flex items-center justify-end">
+            <nav className="flex items-center justify-center">
               <a
                 href="https://www.facebook.com/profile.php?id=61563101911367"
                 target="_blank"
