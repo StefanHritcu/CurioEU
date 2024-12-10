@@ -27,7 +27,7 @@ const App: React.FC = () => {
     <div>
       <Header isScrolled={isScrolledToTop} />
       <ToggleMenu />
-      <main className="bg-yellow-400 mt-12">
+      <main className="bg-yellow-400 mt-46">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
           non velit facilis?!!!
