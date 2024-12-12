@@ -30,7 +30,13 @@ const App: React.FC = () => {
       <ToggleMenu />
       <main className="bg-yellow-400 mt-46">
         <Typography variant="h1" className="text-red-600 bg-green-50">
-          Hello world
+          Hello world!!!!
+        </Typography>
+        <Typography variant="h1" className="text-red-600 bg-green-50">
+          Hello world!!!!
+        </Typography>
+        <Typography variant="p" className="text-red-600 bg-green-50">
+          Hello world!!!!
         </Typography>
       </main>
     </div>
