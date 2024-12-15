@@ -9,21 +9,31 @@ import { FiGithub } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { toggleMenu } from "./features/MainSlice";
 import { useAppSelector } from "./hook";
+import { useDispatch } from "react-redux";
 
 const ToggleMenu: React.FC = () => {
   const toggleMenuOpenStatus = useAppSelector(
     (state) => state.main.isToggleMenuOpen
   );
+  const dispatch = useDispatch();
+
+  const handleLinkClicked = () => {
+    dispatch(toggleMenu());
+  };
   return (
     <>
       <motion.div
         initial={{ x: -1000 }}
         animate={{ x: toggleMenuOpenStatus ? 0 : -1000 }}
-        className="absolute tablet-lg:hidden top-[127px] bg-second-bg w-min-[320px] w-max-[768px] w-full h-screen"
+        className="absolute tablet-lg:hidden top-[76px] bg-second-bg w-min-[320px] w-max-[768px] w-full h-screen"
       >
-        <div className="flex flex-col items-start justify-center pl-4">
+        <div className="flex flex-col items-start justify-center pl-4 mt-6">
           {/* Random Curiosity LINK */}
-          <Link to="/random-curiosity" className="mb-4">
+          <Link
+            to="/random-curiosity"
+            className="mb-4"
+            onClick={handleLinkClicked}
+          >
             <Typography
               variant="p"
               className="text-white font-semibold hover:scale-105 duration-500 transition-transform ease-in-out"
@@ -32,7 +42,11 @@ const ToggleMenu: React.FC = () => {
             </Typography>
           </Link>
           {/* Big Questions LINK */}
-          <Link to="/big-questions" className="mb-4">
+          <Link
+            to="/big-questions"
+            className="mb-4"
+            onClick={handleLinkClicked}
+          >
             <Typography
               variant="p"
               className="text-white font-semibold hover:scale-105 duration-500 transition-transform ease-in-out"
@@ -42,7 +56,7 @@ const ToggleMenu: React.FC = () => {
           </Link>
 
           {/* Eu-Countries LINK */}
-          <Link to="/eu-countries" className="mb-4">
+          <Link to="/eu-countries" className="mb-4" onClick={handleLinkClicked}>
             <Typography
               variant="p"
               className="text-white font-semibold hover:scale-105 duration-500 transition-transform ease-in-out"
@@ -51,7 +65,7 @@ const ToggleMenu: React.FC = () => {
             </Typography>
           </Link>
           {/* Data Charts LINK */}
-          <Link to="/data-charts" className="mb-4">
+          <Link to="/data-charts" className="mb-4" onClick={handleLinkClicked}>
             <Typography
               variant="p"
               className="text-white font-semibold hover:scale-105 duration-500 transition-transform ease-in-out"

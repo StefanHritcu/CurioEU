@@ -1,22 +1,24 @@
-import { useEffect, useState } from "react";
+import React, { lazy as ReactLazy, Suspense, useEffect, useState } from "react";
 import Header from "./Header";
 import ToggleMenu from "./ToggleMenu";
-import Typography from "./Typography";
+import { Route, Routes } from "react-router-dom";
+
+const Homepage = ReactLazy(() => import("./Homepage"));
+const RandomCuriosity = ReactLazy(() => import("./pages/RandomCuriosity"));
+const BigQuestions = ReactLazy(() => import("./pages/BigQuestions"));
+const EuCountries = ReactLazy(() => import("./pages/EuCountries"));
+const DataCharts = ReactLazy(() => import("./pages/DataCharts"));
+const AnswerQuestions = ReactLazy(() => import("./pages/AnswerQuestions"));
 
 const App: React.FC = () => {
-  {
-    /* becomes TRUE if the scroll reaches scroll 0 or 40 maximum */
-  }
+  // becomes TRUE if the scroll reaches scroll 0 or 50 maximum
   const [isScrolledToTop, setIsScrolledToTop] = useState<boolean>(false);
-  const handleScroll = (event: Event) => {
+
+  const handleScroll = () => {
     const scrollPosition: number = window.scrollY;
-    if (scrollPosition > 50) {
-      setIsScrolledToTop(true);
-      console.log("IsScrolledToTop < 50px:", isScrolledToTop);
-    } else {
-      setIsScrolledToTop(false);
-    }
+    setIsScrolledToTop(scrollPosition > 50);
   };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -26,19 +28,64 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <Header isScrolled={isScrolledToTop} />
+      <header>
+        <Header isScrolled={isScrolledToTop} />
+      </header>
       <ToggleMenu />
-      <main className="bg-yellow-400 mt-46">
-        <Typography variant="h1" className="text-red-600 bg-green-50">
-          Hello world!!!!
-        </Typography>
-        <Typography variant="h1" className="text-red-600 bg-green-50">
-          Hello world!!!!
-        </Typography>
-        <Typography variant="p" className="text-red-600 bg-green-50">
-          Hello world!!!!
-        </Typography>
+
+      <main>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<div>Loading Homepage...</div>}>
+                <Homepage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/random-curiosity"
+            element={
+              <Suspense fallback={<div>Loading Random Curiosity...</div>}>
+                <RandomCuriosity />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/big-questions"
+            element={
+              <Suspense fallback={<div>Loading Big Questions...</div>}>
+                <BigQuestions />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/eu-countries"
+            element={
+              <Suspense fallback={<div>Loading Eu-Countries...</div>}>
+                <EuCountries />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/data-charts"
+            element={
+              <Suspense fallback={<div>Loading Data Charts...</div>}>
+                <DataCharts />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/answer-questions"
+            element={
+              <Suspense fallback={<div>Loading Answer Questions...</div>}>
+                <AnswerQuestions />
+              </Suspense>
+            }
+          />
+        </Routes>
       </main>
+      <footer></footer>
     </div>
   );
 };

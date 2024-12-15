@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "./features/MainSlice";
 import RealTimeData from "./components/RealTimeData";
+import { useAppSelector } from "./hook";
 
 {
   /* INTERFACE specifies what props a component expects */
@@ -34,6 +35,16 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
   //TOGGLE MENU CLICKED
   const handleIsToggleMenuClicked = () => {
     dispatch(toggleMenu());
+  };
+
+  const ToggleMenuStats = useAppSelector(
+    (state) => state.main.isToggleMenuOpen
+  );
+
+  const handleCloseToggleMenu = () => {
+    if (ToggleMenuStats) {
+      dispatch(toggleMenu());
+    }
   };
 
   return (
@@ -71,7 +82,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
 
             {/* --- --- --- Logo --- --- ---  */}
             <div>
-              <Link to="/">
+              <Link to="/" onClick={handleCloseToggleMenu}>
                 <motion.img
                   initial={{ x: 0 }}
                   animate={{ x: isScrolled ? -200 : 0 }}
@@ -81,7 +92,7 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
                   alt="main Logo image"
                 />
               </Link>
-              <Link to="/">
+              <Link to="/" onClick={handleCloseToggleMenu}>
                 <motion.img
                   initial={{ x: 0 }}
                   animate={{ x: isScrolled ? -200 : 0 }}
@@ -204,7 +215,11 @@ const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
           </section>
         </div>
         {/* --- --- --- PROGRAMMER FACEBOOK, YOUTUBE, LINKEDIN, GITHUB AND MAIL LINKS --- --- ---  */}
-        <section className="h-14 bg-second-bg z-50 flex items-center justify-between">
+        <section
+          className={`h-14 bg-second-bg z-50 flex items-center justify-between ${
+            ToggleMenuStats ? "hidden" : "block"
+          }`}
+        >
           <RealTimeData />
 
           <div className="hidden tablet-lg:block">

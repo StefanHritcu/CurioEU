@@ -6,7 +6,7 @@ interface MainState {
 }
 
 const initialState: MainState = {
-  isToggleMenuOpen: false, // Valore iniziale
+  isToggleMenuOpen: false,
 };
 
 // Configura la slice
@@ -16,7 +16,7 @@ const MainSlice = createSlice({
   reducers: {
     // Reducer per cambiare lo stato di isToggleMenuOpen
     toggleMenu: (state) => {
-      state.isToggleMenuOpen = !state.isToggleMenuOpen; // Inverte il valore
+      state.isToggleMenuOpen = !state.isToggleMenuOpen;
     },
   },
 });
