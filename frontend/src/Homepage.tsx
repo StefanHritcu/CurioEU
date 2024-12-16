@@ -4,7 +4,9 @@ import HomepageNews from "./HomepageNews";
 const Homepage: React.FC = () => {
   return (
     <>
-      <HomepageNews />
+      <div className="mx-6 tablet-lg:mx-12 tablet-xl:mx-14 laptop:mx-20">
+        <HomepageNews />
+      </div>
     </>
   );
 };
