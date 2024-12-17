@@ -1,9 +1,10 @@
 import React from "react";
+import AmazingRandomCuriosity from "../components/AmazingRandomCuriosity";
 
 const RandomCuriosity: React.FC = () => {
   return (
     <>
-      <div>Random Curiosity</div>
+      <AmazingRandomCuriosity />
     </>
   );
 };
