@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import mainNewsImage from "./assets/homepageImages/mainNews.jpg";
+import mainNewsImage from "./assets/random20imgId/img2.png";
 import Typography from "./Typography";
 import { FourLastNewsHomePageData } from "./dataJSON/FourLastNewsHomePageData";
 

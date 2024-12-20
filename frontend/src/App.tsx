@@ -2,6 +2,7 @@ import React, { lazy as ReactLazy, Suspense, useEffect, useState } from "react";
 import Header from "./Header";
 import ToggleMenu from "./ToggleMenu";
 import { Route, Routes } from "react-router-dom";
+import Footer from "./Footer";
 
 const Homepage = ReactLazy(() => import("./Homepage"));
 const RandomCuriosity = ReactLazy(() => import("./pages/RandomCuriosity"));
@@ -27,13 +28,13 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="relative">
       <header>
         <Header isScrolled={isScrolledToTop} />
       </header>
       <ToggleMenu />
 
-      <main>
+      <main className="min-h-screen">
         <Routes>
           <Route
             path="/"
@@ -85,7 +86,8 @@ const App: React.FC = () => {
           />
         </Routes>
       </main>
-      <footer></footer>
+
+      <Footer />
     </div>
   );
 };
